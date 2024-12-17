@@ -8,7 +8,7 @@ import {
   cloneElement,
   forwardRef,
 } from 'react';
-import { findDOMNode } from 'react-dom';
+// import { findDOMNode } from 'react-dom';
 import TweenOne, { Ticker } from 'tween-one';
 
 import {
@@ -428,7 +428,7 @@ export default forwardRef((props: IProps, ref: any) => {
         childShow[item.key] &&
         cloneElement(item, {
           ref: (c: any) => {
-            childRefs.current[item.key] = c instanceof Element ? c : findDOMNode(c);
+            childRefs.current[item.key] = c // instanceof Element ? c : findDOMNode(c);
             if (!c) {
               delete childRefs.current[item.key];
             }
