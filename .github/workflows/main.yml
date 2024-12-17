@@ -88,27 +88,33 @@ jobs:
       - name: compile
         run: npm run compile
 
-    needs: setup
+      - name: Set up npmrc for GitHub Packages
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
-  coverage:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@master
-
-      - name: restore cache from package-lock.json
-        uses: actions/cache@v2
-        with:
-          path: package-temp-dir
-          key: lock-${{ github.sha }}
-
-      - name: restore cache from node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/package-lock.json') }}
-
-      - name: coverage
-        run: npm test -- --coverage && bash <(curl -s https://codecov.io/bash)
+      - name: Publish to GitHub Packages
+        run: npm publish
 
     needs: setup
+
+#  coverage:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: checkout
+#        uses: actions/checkout@master
+#
+#      - name: restore cache from package-lock.json
+#        uses: actions/cache@v2
+#        with:
+#          path: package-temp-dir
+#          key: lock-${{ github.sha }}
+#
+#      - name: restore cache from node_modules
+#        uses: actions/cache@v2
+#        with:
+#          path: node_modules
+#          key: node_modules-${{ hashFiles('**/package-temp-dir/package-lock.json') }}
+#
+#      - name: coverage
+#        run: npm test -- --coverage && bash <(curl -s https://codecov.io/bash)
+#
+#    needs: setup

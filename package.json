@@ -1,5 +1,5 @@
 {
-  "name": "rc-queue-anim",
+  "name": "@sijinhui/rc-queue-anim",
   "version": "2.0.0",
   "description": "Queue animation component for react",
   "keywords": [
@@ -19,10 +19,13 @@
     "ant-motion"
   ],
   "homepage": "https://github.com/react-component/queue-anim",
-  "author": "155259966@qq.com",
+  "author": "sijinhui@qq.com",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/sijinhui"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/react-component/queue-anim.git"
+    "url": "https://github.com/sijinhui/queue-anim.git"
   },
   "bugs": {
     "url": "https://github.com/react-component/queue-anim/issues"
